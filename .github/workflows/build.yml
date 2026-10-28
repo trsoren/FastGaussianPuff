@@ -62,6 +62,13 @@ jobs:
           pytest -sv test_import.py
           cd ..
 
+      - name: Test source outside sensor bounds
+        shell: bash
+        run: |
+          eval "$(micromamba shell hook --shell=bash)"
+          micromamba activate gp
+          pytest -sv tests/test_source_bounds.py
+
       - name: Run demo
         shell: bash
         run: |
